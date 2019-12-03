@@ -8,3 +8,4 @@
 ### Exercices
 
 - [Transformation Tableau Associatif en POO](Exercises/ArrayToPOO/ArrayToPOO.md)
+- [Pokedex](Exercises/Pokedex/Pokedex.md)
