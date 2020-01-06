@@ -45,8 +45,25 @@ class Pokemon extends AbstractModel {
     public static function getList() {
         $sql = 'SELECT id, name FROM pokemon ORDER BY id';
 
-        $query = self::createQuery($sql, 'Pokemon');
+        $query = self::createQuery($sql, self::class);
 
         return $query->fetchAll();
+    }
+
+    /**
+     * Get one pokemon
+     *
+     * @param $id
+     *
+     * @return array
+     */
+    public static function getPokemon($id) {
+        $sql = 'SELECT id, name FROM pokemon WHERE id = :id';
+
+        $query = self::createQuery($sql, self::class, [
+            'id' => $id
+        ]);
+
+        return $query->fetch();
     }
 }
