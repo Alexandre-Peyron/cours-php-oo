@@ -14,6 +14,11 @@ class Pokemon extends AbstractModel {
     private $name;
 
     /**
+     * @var string
+     */
+    private $types;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -38,12 +43,32 @@ class Pokemon extends AbstractModel {
     }
 
     /**
+     * @return mixed
+     */
+    public function getTypes()
+    {
+        return $this->types;
+    }
+
+    /**
+     * @param mixed $types
+     */
+    public function setTypes($types)
+    {
+        $this->types = $types;
+    }
+
+    /**
      * Get All pokemon list
      *
      * @return array
      */
     public static function getList() {
-        $sql = 'SELECT id, name FROM pokemon ORDER BY id';
+        $sql = 'SELECT P.*, group_concat(DISTINCT T.label ORDER BY T.label DESC SEPARATOR \', \') as types
+                FROM pokemon AS P
+                INNER JOIN pokemon_has_type as PHT ON PHT.pokemon_id = P.id
+                INNER JOIN type as T ON PHT.type_id = T.id
+                GROUP BY P.id, P.name';
 
         $query = self::createQuery($sql, self::class);
 
