@@ -16,7 +16,7 @@
             <tr>
                 <td><?php echo $pokemon->getId(); ?></td>
                 <td>
-                    <a href="/pokemon?id=<?php echo $pokemon->getId(); ?>">
+                    <a href="/?page=pokemon&id=<?php echo $pokemon->getId(); ?>">
                         <?php echo $pokemon->getName(); ?>
                     </a>
                 </td>
