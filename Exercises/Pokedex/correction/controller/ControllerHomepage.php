@@ -2,6 +2,7 @@
 
 require('core/AbstractController.php');
 require('core/View.php');
+require('model/Pokemon.php');
 
 class ControllerHomepage extends AbstractController {
 
@@ -11,6 +12,10 @@ class ControllerHomepage extends AbstractController {
      * @throws Exception
      */
     public function index() {
-        $this->createView();
+        $pokemons = Pokemon::getList();
+
+        $this->createView([
+            'pokemons' => $pokemons
+        ]);
     }
 }
