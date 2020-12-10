@@ -59,7 +59,7 @@ class Pokemon extends AbstractModel {
     }
 
     /**
-     * Get All pokemon list
+     * Get All pokemon list with types
      *
      * @return array
      */
