@@ -380,4 +380,48 @@ class View {
 ```
 
 
- 
+## Pistes d'évolutions 
+
+#### Request (facile)
+
+Créer une class `Request` qui vérifie les données passées en GET et POST.
+Cette class possède également des méthodes pour récupérer facilement les données GET et POST.
+
+#### ORM (moyen)
+
+Améliorez notre `AbstractModel` pour lui ajouter les méthodes suivantes :
+- findAll() - qui récupère toute la liste de notre modèle
+- findOneById($id) - Récupère un élément en fonction de l'ID passé en paramètre 
+
+Il faudra ensuite modifier nos controllers pour utiliser ces méthodes.
+
+Il s'agit bien sur d'avoir quelque chose de complètement dynamique, si on ajoutait de nouveaux modèles, ils fonctionneraient de la même manière.
+
+#### Formulaire (moyen)
+
+Sur la structure que l'on vient de créer, vous pouvez avec une page qui permet d'ajouter un Pokémon.
+
+Il s'agit de créer un formulaire, avec les champs suivants : 
+- nom (input text)
+- types (select multiple avec la liste des types)
+
+Et ajouter un controller qui afficher le formulaire et le traiter pour vérifier les données et ajouter les valeurs en BDD.
+
+#### Formulaire Partie 2 (facile)
+
+Une fois votre formulaire en place, améliorez votre `AbstractModel` afin de lui ajouter une méthode ->save().
+
+L'objectif de cette méthode est de sauvegarder en BDD notre modèle nouvellement créé.
+
+
+### View (difficile)
+
+Créez votre propre langage de balise pour vos views.
+
+Il ne doit plus y avoir de PHP dedans !
+
+Pour rappel, twig utilise les balises suivantes : 
+- {{ }} ce qui est entre ces doubles accolades doit être affiché
+- {% %} ce qui se situe entre ces éléments doit être exécuté
+
+Vous pouvez utiliser la même signalétique que Twig ou créer la votre. 
