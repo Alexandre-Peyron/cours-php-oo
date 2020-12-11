@@ -54,7 +54,7 @@ define('DB_PASSWORD', 'root');
 ```
 
 
-### Etape 3 : Model
+## Etape 3 : Model
 
 Pour cette étape, nous allons créer 2 nouveaux fichiers : 
 - `/core/AbstractModel.php`
