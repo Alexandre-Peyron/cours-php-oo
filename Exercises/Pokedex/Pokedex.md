@@ -271,3 +271,113 @@ class ControllerHomepage  {
 ```
 
 Objectif ici, compléter les méthodes pour afficher la liste des Pokémons.
+
+
+## Etape 5 : Les View
+
+Notre MVC prend forme. On a un modèle fonctionnel ainsi qu'un router.
+
+Il nous manque des vues pour générer un affichage un peu plus intéressant.
+
+Cela va, bien sur, pas se passer dans les controllers car on serait vite submergé de balises HTML qui viendraient pourrir notre code.
+
+L'objectif, comme pour le reste, est de diviser pour mieux régner.
+
+Notre controller va évoluer ainsi :
+
+```php
+<?php
+
+require('core/View.php');
+require('model/Pokemon.php');
+
+class ControllerHomepage extends AbstractController {
+
+    /**
+     * Homepage action controller
+     *
+     * @throws Exception
+     */
+    public function index() {
+        $pokemons = Pokemon::getList();
+
+        try {
+            $view = new View('ControllerHomepage');
+        }
+        catch(Exception $e) {
+            throw new Exception('No view');
+        }
+
+        $view->createView([
+            'pokemons' => $pokemons
+        ]);
+    }
+}
+
+```
+
+On va créer une nouvelle class View dont le travail sera d'aller chercher les bons fichiers contenant du HTML.
+
+```php
+<?php
+
+class View {
+
+    private $file;
+
+    /**
+     * View constructor.
+     *
+     * @param string $controller
+     */
+    public function __construct($controller = '')
+    {
+        $file = 'view/';
+
+        if ($controller !== '') {
+            $file .= $controller . '/';
+        }
+
+        // Chemin généré : view/NomDuController/index.php
+        $this->file = $file . 'index.php';
+    }
+
+    /**
+     * Create view
+     *
+     * @param array $data
+     *
+     * @throws Exception
+     */
+    public function createView($data = [])
+    {
+        $view = $this->generateFile($this->file, $data);
+
+        echo $view;
+    }
+
+    /**
+     * Generate view with data
+     *
+     * @param $file
+     * @param $data
+     *
+     * @return false|string
+     * @throws Exception
+     */
+    private function generateFile($file, $data)
+    {
+        if (file_exists($file)) {
+            // C'est ici que la magie se passe.
+            // Trouvez un moyen de récupérer le contenu d'un fichier et l'afficher
+        }
+        else {
+            throw new Exception('Fichier ' . $file . ' introuvable');
+        }
+    }
+}
+
+```
+
+
+ 
