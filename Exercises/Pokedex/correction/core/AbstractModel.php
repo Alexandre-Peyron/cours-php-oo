@@ -27,7 +27,7 @@ abstract class AbstractModel{
      *
      * @return PDO
      */
-    private static function DB()
+    protected static function DB()
     {
         if (self::$bdd === null) {
             // Création de la connexion
