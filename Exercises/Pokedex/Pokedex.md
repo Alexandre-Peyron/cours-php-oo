@@ -176,3 +176,98 @@ class Pokemon extends AbstractModel {
 ```
 
 Dans l'`index.php`, faites appel aux méthodes `getList` ou `getPokemon` pour afficher les données depuis la BDD.
+
+## Etape 4 : Le Router
+
+Maintenant qu'on récupère nos données de manière structurée, on va commencer à mettre en place un système de routing.
+
+Le travail du `Router` est de récupérer les paramètres passés dans l'URL et d'appeler ensuite les bons `controller`. 
+
+Notre index.php va ressembler à ceci : 
+
+```php
+<?php
+
+require_once('config/config.php');
+require_once('core/Router.php');
+
+
+$router = new Router();
+$router->createRequest();
+
+```
+
+Et notre Router à ça : 
+
+```php
+<?php
+
+class Router {
+
+    /**
+    * @var array
+    */ 
+    private $request;
+
+    /**
+     * Récupère les paramètres en GET et POST puis génère le controller associé
+     *
+     * @throws Exception
+     */
+    public function createRequest() {
+        try {
+            // On récupère les données en GET et en POST
+            $this->request = array_merge($_GET, $_POST);
+
+            // On crée le controller nécessaire
+            $controller = $this->createController();
+
+            // On appelle la méthode index du controller
+            $controller->index();
+        }
+        catch (Exception $e) {
+            // 404
+            throw new Exception('404 - Page introuvable');
+        }
+    }
+
+    /**
+     * Charge le fichier et la classe du controller
+     *
+     * @throws Exception
+     */
+    private function createController() {
+        // A compléter :
+        // Cette méthode va récupérer la valeur "page" passée en GET
+        // Avec cette valeur, elle va créer une nouvelle instance du controller correspondant
+        // Exemple d'URL : localhost/index.php?page=homepage
+        // Controller instancié : ControllerHomepage.php
+        // Le controller est ensuite retourné pour que la méthode createRequest appelle la méthode index() du controller
+    }
+}
+
+```
+
+Et notre HomepageController.php 
+
+```php
+<?php
+
+require('model/Pokemon.php');
+
+class ControllerHomepage  {
+
+    /**
+     * Homepage action controller
+     *
+     * @throws Exception
+     */
+    public function index() {
+        // A compléter 
+        // Récupère et affiche la liste des pokémons
+    }
+}
+
+```
+
+Objectif ici, compléter les méthodes pour afficher la liste des Pokémons.

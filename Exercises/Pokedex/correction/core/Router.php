@@ -2,6 +2,9 @@
 
 class Router {
 
+    /**
+     * @var array
+     */
     private $request;
 
     /**
@@ -26,7 +29,7 @@ class Router {
     /**
      * Charge le fichier et la classe du controller
      *
-     * @return string
+     * @return AbstractController
      * @throws Exception
      */
     private function createController() {
