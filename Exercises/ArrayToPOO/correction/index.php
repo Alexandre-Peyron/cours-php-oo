@@ -13,7 +13,7 @@ $armes[] = new Weapon(4, "fléau", "Une arme contondante du moyen-âge", "fleau/
 <div>
     <b>Voici toutes les armes : </b>
 </div>
-<?php foreach($armes as $arme){ ?>
+<?php foreach($armes as $arme): ?>
     <div class="row align-items-center">
         <div class="col-3 text-center">
             <img src="sources/<?= $arme->getImage() ?>" />
@@ -23,4 +23,4 @@ $armes[] = new Weapon(4, "fléau", "Une arme contondante du moyen-âge", "fleau/
             <p><?=$arme->getDescription() ?></p>
         </div>
     </div>
-<?php } ?>
+<?php endforeach; ?>
