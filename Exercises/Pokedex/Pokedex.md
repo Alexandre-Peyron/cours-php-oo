@@ -399,7 +399,7 @@ Il s'agit bien sur d'avoir quelque chose de complètement dynamique, si on ajout
 
 #### Formulaire (moyen)
 
-Sur la structure que l'on vient de créer, vous pouvez avec une page qui permet d'ajouter un Pokémon.
+Sur la structure que l'on vient de créer, vous devez construire une page qui permet d'ajouter un Pokémon.
 
 Il s'agit de créer un formulaire, avec les champs suivants : 
 - nom (input text)
@@ -413,6 +413,15 @@ Une fois votre formulaire en place, améliorez votre `AbstractModel` afin de lui
 
 L'objectif de cette méthode est de sauvegarder en BDD notre modèle nouvellement créé.
 
+#### URL Rewriting (moyen)
+
+Nous allons à présent, retravailler les URLs de nos pages.
+
+Actuellement, pour naviguer d'une page à l'autre, nous utilisons un paramètre dans l'URL `?page={maPage}`.
+
+L'objectif ici est de transformer ce paramètre pour avoir à la place de `?page=pokemon` -> `/pokemon/`.
+
+Pour trouver la solution, tout est dans le titre de cette tâche.
 
 ### View (difficile)
 
